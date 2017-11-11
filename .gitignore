@@ -1,2 +1,6 @@
 node_modules
 out
+.idea
+src/html
+src/assets
+src/index.html

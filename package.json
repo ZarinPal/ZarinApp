@@ -17,12 +17,8 @@
     "config": {
         "forge": {
             "make_targets": {
-                "win32": [
-                    "squirrel"
-                ],
-                "darwin": [
-                    "zip"
-                ],
+                "win32": ["squirrel"],
+                "darwin": ["zip", "dmg"],
                 "linux": [
                     "deb",
                     "rpm"
