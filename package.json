@@ -17,18 +17,28 @@
     "config": {
         "forge": {
             "make_targets": {
-                "win32": ["squirrel"],
-                "darwin": ["zip", "dmg"],
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "zip",
+                    "dmg"
+                ],
                 "linux": [
                     "deb",
                     "rpm"
                 ]
             },
             "electronPackagerConfig": {
-                "packageManager": "yarn"
+                "packageManager": "yarn",
+                "ignore": [
+                    "\\.idea"
+                ],
+                "icon": "./src/icons/icon.icns"
             },
             "electronWinstallerConfig": {
-                "name": "zarinapp"
+                "name": "zarinapp",
+                "icon": "./src/icons/icon.ico"
             },
             "electronInstallerDebian": {},
             "electronInstallerRedhat": {},
