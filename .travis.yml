@@ -5,6 +5,9 @@ language: node_js
 osx_image: xcode8.2
 node_js:
   - stable
+branches:
+  only:
+    - /^v\d+(\.\d+)+$/
 notifications:
   email: false
 before_script:
