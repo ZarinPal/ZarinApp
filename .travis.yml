@@ -1,0 +1,20 @@
+os:
+  - osx
+sudo: required
+language: node_js
+osx_image: xcode8.2
+node_js:
+  - stable
+notifications:
+  email: false
+before_script:
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+after_success:
+  - "./compiler.sh"
+deploy:
+  provider: releases
+  api_key:
+    secure: iuuDUF1LiAJ4+3IJQezEsNuYvh6/kj8pyzt5osg16w/kcMpj9C7IF0PJBsIl4nR+nfTU8iygOqhXN/aDKU0/+M0wRzUv5Gn7F3WC1oymBfQQSZEUp3I/ZmmXWXeI54Y1tYDanaNUnnHvwEUPQAPdPoUQCqMoRbdoBFxoc3K7aMM9z/OUyUdQz/E9pHMniBvTvw9RJ0nYFFlazrFEvilzXXfEz217/YCNsU2XFISiwJStNLOR6dPAgJFbRdH18T6Lz8NjuDpHyUe3np9YbIV/2P0TEbAInxSfX+XvfrjNqGdx8yDtlKEsOf4cTXW7BqKVBTObslokk1M1oIVGSell4u+Pj6BNGwZ+bQWarjDzUETRf6V2ho0d//JIEWOf9EEwwKLZqdlIAPdaHtXi6Jq5qQct7BZCIuqtCn7yd92xI0dlR0GvbESVjJ3rQ4e6GbJxZISqN5mYkn8QyfIOu2NfM1jBUzLdsCJLbGkCtTJi4z9J5tqnfgnc5/CrG3RZA361lPeLk47RLDAE3VHfK/rcPSP/ZSjVw9/s1723kSadJ+t25+fi0EJzxJV9EIoUAo/0xqMvFnH20fXJlv299JDP6en2AsaZLmCh7z2G2ly/hy6Ji4AS3ScY13O+j3sLMGYN5ZD77VmALqi3iVf7/8+zPiAm8yFlki8+nN9fLY3Irqw=
+  file: "./out/make/*.*"
+  on:
+    repo: ZarinPal/ZarinApp
