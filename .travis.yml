@@ -21,3 +21,4 @@ deploy:
   file: "./out/make/*.*"
   on:
     repo: ZarinPal/ZarinApp
+    tags: true
