@@ -1,18 +1,23 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, autoUpdater } from 'electron';
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer';
+import { enableLiveReload } from 'electron-compile';
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
-}
+const server = '127.0.0.1:3000';
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
+
+autoUpdater.setFeedURL(feed);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-const createWindow = () => {
+const isDevMode = process.execPath.match(/[\\/]electron/);
+
+if (isDevMode) enableLiveReload();
+const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1000,
+    width: 800,
     height: 600,
   });
 
@@ -20,9 +25,12 @@ const createWindow = () => {
   mainWindow.loadURL(`file://${__dirname}/index.html#/panel/home`);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  if (isDevMode) {
+    await installExtension(VUEJS_DEVTOOLS);
+    mainWindow.webContents.openDevTools();
+  }
 
-  // Emitted when the window is closed.
+    // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
