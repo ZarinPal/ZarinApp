@@ -10,6 +10,9 @@ branches:
     - /^v\d+(\.\d+)+$/
 notifications:
   email: false
+before_install:
+  - brew update
+  - brew install fakeroot
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
