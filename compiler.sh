@@ -8,7 +8,3 @@ yarn run app-production
 cp -r assets ../
 cp index.html ../
 rm -rf ../html/
-cd ../..
-yarn run make-darwin
-yarn run make-linux
-#yarn run make-win32

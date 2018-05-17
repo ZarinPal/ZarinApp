@@ -16,9 +16,8 @@ before_install:
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
-  - echo ''
-after_success:
   - "./compiler.sh"
+  - "yarn run make-darwin"
 deploy:
   provider: releases
   api_key:
