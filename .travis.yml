@@ -4,7 +4,7 @@ sudo: required
 language: node_js
 osx_image: xcode9.3
 node_js:
-  - stable
+  - '9'
 branches:
   only:
     - /^v\d+(\.\d+)+$/
@@ -12,6 +12,8 @@ notifications:
   email: false
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+script:
+  - echo ''
 after_success:
   - "./compiler.sh"
 deploy:
